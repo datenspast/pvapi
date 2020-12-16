@@ -200,4 +200,14 @@ class YieldPerKwpViewSet(viewsets.ModelViewSet):
 
 You can now use url filters for "state": http://127.0.0.1:8001/api/pv_yield/?state=by
 
+Commit the changes, push them to GitHub and deploy the app.
+In order to use the admin interface on heroku, you have to create a Superuser there as well.
+One option is in the web interface.
+```
+python manage.py migrate
+python manage.py createsuperuser
+```
+Add some data and try the API.
+
+
 
