@@ -11,6 +11,7 @@ djangorestframework = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
+django-url-filter = "*"
 
 [requires]
 python_version = "3.8"
