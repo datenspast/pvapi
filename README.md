@@ -20,7 +20,7 @@ Create Django Project:
 Move the pipfile and pipfile.loc to the root directory (same as manage.py)
 Add a Procfile to the root directory (same as pipfile)
 
-`web: gunicorn myproject.wsgi`
+`web: gunicorn pvapi.wsgi`
 
 Add the following import statement to the top of settings.py:
 
@@ -43,11 +43,41 @@ Visit http://127.0.0.1:8001/. You should see the default Django Start page.
 
 
 ## Deploy to heroku via git
-Initialize a git repository in the project root and commit changes.
+Add a `.gitignore` file to the project root direcotry.
+```
+*.pyc
+*.db
+*~
+.*
+
+/site/
+/htmlcov/
+/coverage/
+/build/
+/dist/
+/*.egg-info/
+/env/
+MANIFEST
+coverage.*
+
+!.gitignore
+!.travis.yml
+!.isort.cfg
+
+```
+Initialize a new git repository in the project root and commit changes.
 ```
 git init
-git commit
+git commit .
 ```
 
+Add a new Repository to github and push the changes.
+```
+git remote add origin https://github.com/YOURGITHUBNAME/pvapi.git
+git branch -M master
+git push -u origin master
+```
 
-
+Create a new heroku app and select GitHub as deployment method.
+Connect to the repository and hit "manual deploy".
+View the app. You should see the Django start page.
