@@ -43,7 +43,11 @@ Visit http://127.0.0.1:8001/. You should see the default Django Start page.
 
 
 ## Deploy to heroku via git
-Initialize a git repository.
+Initialize a git repository in the project root and commit changes.
+```
+git init
+git commit
+```
 
 
 
