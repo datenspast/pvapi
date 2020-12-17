@@ -67,6 +67,7 @@ coverage.*
 
 ```
 Initialize a new git repository in the project root and commit changes.
+
 ``` console
 git init
 git commit .
@@ -99,6 +100,7 @@ INSTALLED_APPS = [
 ```
 
 Modify the newly created `models.py` in the folder `api`.
+
 ``` python
 from django.db import models
 
@@ -109,13 +111,16 @@ class YieldPerKwp(models.Model):
     def __str__(self):
         return self.state + ": " + str(self.yield_kWp)
 ```
+
 Migrate the changes:
+
 ``` console
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 Add a new file `serializers.py` into the `/api` folder:
+
 ``` python
 from rest_framework import serializers
 from .models import YieldPerKwp
@@ -127,7 +132,7 @@ class YieldPerKwpSerializer(serializers.ModelSerializer):
         fields = ('yield_kWp', 'state')
 ```
 
-Write a view in `api/views.py`.
+Write a view in `api/views.py`:
 
 ``` python
 from django.shortcuts import render
@@ -153,6 +158,7 @@ urlpatterns = router.urls
 ```
 
 To register the urls in the `pv_api/urls.py` file, make following changes:
+
 ``` python
 from django.contrib import admin
 from django.urls import path, include
@@ -165,7 +171,7 @@ urlpatterns = [
 
 Check if it works and visit: http://127.0.0.1:8001/api/ -> You should see the Django Rest View of the request.
 
-## Add Date via the Django Admin interface
+## Add Data via the Django Admin interface
 
 First, register the model in the `api/admin.py`:
 
@@ -177,13 +183,15 @@ class YieldPerKwpAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(YieldPerKwp, YieldPerKwpAdmin)
-``` console
+```
+
 Create a Admin-Superuser: `python manage.py createsuperuser`
 Visit http://127.0.0.1:8001/admin/, log in and add some data.
 Visit http://127.0.0.1:8001/api/pv_yield/ and see the data as served by the API.
 
 ## Filtering
 Add the following to the `pvapi/settings.py`:
+
 ``` python
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
